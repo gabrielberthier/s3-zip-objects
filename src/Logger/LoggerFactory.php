@@ -1,5 +1,7 @@
 <?php
 
+namespace S3DataTransfer\Logger;
+
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Psr\Log\LoggerInterface;

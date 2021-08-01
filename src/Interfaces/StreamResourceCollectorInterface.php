@@ -2,6 +2,7 @@
 
 namespace S3DataTransfer\Interfaces;
 
+use Generator;
 use S3DataTransfer\Objects\ResourceObject;
 
 interface StreamResourceCollectorInterface
@@ -13,5 +14,5 @@ interface StreamResourceCollectorInterface
      *
      * @return Generator<string, resource>
      */
-    public function streamCollect(string $bucketName, ResourceObject ...$resourceObjects);
+    public function streamCollect(string $bucketName, ResourceObject ...$resourceObjects): Generator;
 }

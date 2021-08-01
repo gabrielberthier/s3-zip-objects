@@ -32,7 +32,7 @@ class AsyncStreamResourceCollector implements StreamResourceCollectorInterface
      *
      * @return Generator<string, resource>
      */
-    public function streamCollect(string $bucketName, ObjectInterface ...$resourceObjects)
+    public function streamCollect(string $bucketName, ObjectInterface ...$resourceObjects): Generator
     {
         $context = stream_context_create([
             's3' => ['seekable' => true],

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\DataTransference\Downloader\S3;
+namespace S3DataTransfer\S3;
 
 use S3DataTransfer\Interfaces\ObjectInterface;
 use S3DataTransfer\Streams\StreamResourceCollector;
@@ -31,8 +31,7 @@ class S3StreamObjectsZipDownloader
     public function zipObjects(
         string $bucketName,
         array $resourceObjects,
-        string $zipname = 'resources.zip',
-        bool $checkObjectExist = false
+        string $zipname = 'resources.zip'
     ) {
         $zip = new ZipStream($zipname, $this->opt);
         $resources = $this->streamResourceCollector->streamCollect($bucketName, ...$resourceObjects);
