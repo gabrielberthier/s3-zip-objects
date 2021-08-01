@@ -8,7 +8,7 @@ use S3DataTransfer\Clients\HttpClientAdapter;
 use S3DataTransfer\Credentials\S3ClientFactory;
 use S3DataTransfer\Credentials\S3Credentials;
 use S3DataTransfer\Credentials\S3Options;
-use S3DataTransfer\S3\Downloader\HttpObjectDownloader;
+use S3DataTransfer\S3\Downloader\Sync\HttpObjectDownloader;
 use S3DataTransfer\Streams\StreamResourceCollector;
 
 class S3DownloaderFactory

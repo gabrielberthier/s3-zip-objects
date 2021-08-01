@@ -1,6 +1,6 @@
 <?php
 
-namespace S3DataTransfer\S3\Downloader;
+namespace S3DataTransfer\S3\Downloader\Sync;
 
 use Aws\S3\Exception\S3Exception;
 use Aws\S3\S3Client;

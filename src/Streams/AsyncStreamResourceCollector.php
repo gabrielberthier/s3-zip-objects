@@ -3,16 +3,18 @@
 namespace S3DataTransfer\Streams;
 
 use Generator;
+use GuzzleHttp\Promise\Utils;
 use Psr\Log\LoggerInterface;
 use S3DataTransfer\Exceptions\InvalidParamsException;
-use S3DataTransfer\Interfaces\ObjectDownloaderInterface;
+use S3DataTransfer\Interfaces\AsyncObjectDownloaderInterface;
 use S3DataTransfer\Interfaces\ObjectInterface;
+use S3DataTransfer\Interfaces\StreamResourceCollectorInterface;
 use S3DataTransfer\Utils\S3FileVerifier;
 
-class StreamResourceCollector
+class AsyncStreamResourceCollector implements StreamResourceCollectorInterface
 {
     public function __construct(
-        private ObjectDownloaderInterface $downloader,
+        private AsyncObjectDownloaderInterface $downloader,
         private LoggerInterface $loggerInterface,
         private bool $checkObjectExist = false
     ) {
@@ -36,14 +38,21 @@ class StreamResourceCollector
             's3' => ['seekable' => true],
         ]);
 
+        $files = [];
+        $promises = [];
         foreach ($resourceObjects as $obj) {
+            $this->validateResourceObjects($bucketName, $obj);
+            $response = $this->downloader->downloadObjectAsync($bucketName, $obj->path());
+            $fileName = $obj->name() ?? $response->fileName();
+            $files[$fileName] = $response->fileName();
+            $promises[] = $response->promise();
+        }
+
+        Utils::unwrap($promises);
+
+        foreach ($files as $fileName => $path) {
             try {
-                $this->validateResourceObjects($bucketName, $obj);
-
-                $tmpfile = $this->downloader->downloadObject($bucketName, $obj->path());
-
-                if ($stream = fopen($tmpfile, 'r', false, $context)) {
-                    $fileName = $obj->name() ?? $tmpfile;
+                if ($stream = fopen($path, 'r', false, $context)) {
                     yield $fileName => $stream;
                 }
             } catch (InvalidParamsException $e) {

@@ -6,5 +6,12 @@ use S3DataTransfer\Objects\ResourceObject;
 
 interface StreamResourceCollectorInterface
 {
-    public function streamCollect(string $bucketName, ResourceObject $resourceObjects);
+    /**
+     * Collects a stream of resources.
+     *
+     * @param ObjectInterface ...$resourceObjects
+     *
+     * @return Generator<string, resource>
+     */
+    public function streamCollect(string $bucketName, ResourceObject ...$resourceObjects);
 }

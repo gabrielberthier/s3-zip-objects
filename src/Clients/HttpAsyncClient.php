@@ -4,31 +4,22 @@ namespace S3DataTransfer\Clients;
 
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Promise\PromiseInterface;
-use GuzzleHttp\Promise\Utils;
 use Psr\Http\Message\RequestInterface;
+use S3DataTransfer\Interfaces\AsyncClientInterface;
 
-class HttpAsyncClient
+class HttpAsyncClient implements AsyncClientInterface
 {
     public function __construct(private HttpClient $client)
     {
     }
 
-    /**
-     * @param RequestInterface[] $requests
-     */
-    public function sendAsyncRequest(array $requests): PromiseInterface
+    public function sendAsyncRequest(RequestInterface $request): PromiseInterface
     {
-        $promises = [];
+        $tmpfile = (string) $request->getBody();
 
-        foreach ($requests as $request) {
-            $tmpfile = (string) $request->getBody();
-
-            $promises[$tmpfile] = $this->client->getAsync((string) $request->getUri(), [
-                'synchronous' => true,
-                'sink' => fopen($tmpfile, 'w+'),
-            ]);
-        }
-
-        return Utils::all($promises);
+        return $this->client->getAsync((string) $request->getUri(), [
+            'synchronous' => true,
+            'sink' => fopen($tmpfile, 'w+'),
+        ]);
     }
 }
