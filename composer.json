@@ -1,0 +1,41 @@
+{
+    "name": "gabrielberthier/s3-data-transfer",
+    "description": "A package to handle s3 upload and download using PSR-7 interfaces, async operations and Zip options",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Gabriel Nogueira Berthier",
+            "email": "gabrielnberthier@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "S3DataTransfer\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "process-timeout": 0,
+        "sort-packages": true
+    },
+    "require": {
+        "php": "^8.0",
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "maennchen/zipstream-php": "^2.1",
+        "monolog/monolog": "^2.3",
+        "vlucas/phpdotenv": "^5.3"
+    },
+    "require-dev": {
+        "phpspec/prophecy-phpunit": "^2.0",
+        "phpunit/phpunit": "^9"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:nodebug": "@php -c ./disable-xdebug.ini && phpunit",
+        "test:update": "phpunit --migrate-configuration"
+    }
+}
