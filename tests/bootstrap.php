@@ -1,5 +1,3 @@
 <?php
 
-require __DIR__.'/../configs/bootstrap.php';
-
-$_ENV['MODE'] = 'TEST';
+require __DIR__.'/../vendor/autoload.php';

@@ -13,7 +13,7 @@ class HttpObjectDownloader implements ObjectDownloaderInterface
 {
     public function __construct(private S3Client $s3Client, private ClientInterface $clientInterface)
     {
-        $this->s3client->registerStreamWrapper();
+        $this->s3Client->registerStreamWrapper();
     }
 
     public function downloadObject(string $bucket, string $key, $useTempLocation = false): string
@@ -33,8 +33,8 @@ class HttpObjectDownloader implements ObjectDownloaderInterface
 
     private function mountRequestS3Request(string $bucket, string $path): RequestInterface
     {
-        return $this->s3client->createPresignedRequest(
-            $this->s3client->getCommand('GetObject', [
+        return $this->s3Client->createPresignedRequest(
+            $this->s3Client->getCommand('GetObject', [
                 'Key' => $path,
                 'Bucket' => $bucket,
             ]),
@@ -50,7 +50,7 @@ class HttpObjectDownloader implements ObjectDownloaderInterface
         }
 
         try {
-            $this->s3client->headBucket([
+            $this->s3Client->headBucket([
                 'Bucket' => $bucketName,
             ]);
         } catch (S3Exception) {
