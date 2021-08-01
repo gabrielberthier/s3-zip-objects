@@ -41,22 +41,22 @@ class AsyncStreamResourceCollector implements StreamResourceCollectorInterface
         $files = [];
         $promises = [];
         foreach ($resourceObjects as $obj) {
-            $this->validateResourceObjects($bucketName, $obj);
-            $response = $this->downloader->downloadObjectAsync($bucketName, $obj->path());
-            $fileName = $obj->name() ?? $response->fileName();
-            $files[$fileName] = $response->fileName();
-            $promises[] = $response->promise();
+            try {
+                $this->validateResourceObjects($bucketName, $obj);
+                $response = $this->downloader->downloadObjectAsync($bucketName, $obj->path());
+                $fileName = $obj->name() ?? $response->fileName();
+                $files[$fileName] = $response->fileName();
+                $promises[] = $response->promise();
+            } catch (InvalidParamsException $e) {
+                $this->loggerInterface->alert($e->getMessage());
+            }
         }
 
         Utils::unwrap($promises);
 
         foreach ($files as $fileName => $path) {
-            try {
-                if ($stream = fopen($path, 'r', false, $context)) {
-                    yield $fileName => $stream;
-                }
-            } catch (InvalidParamsException $e) {
-                $this->loggerInterface->alert($e->getMessage());
+            if ($stream = fopen($path, 'r', false, $context)) {
+                yield $fileName => $stream;
             }
         }
     }
