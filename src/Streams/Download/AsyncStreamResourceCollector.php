@@ -8,21 +8,14 @@ use Psr\Log\LoggerInterface;
 use S3DataTransfer\Exceptions\InvalidParamsException;
 use S3DataTransfer\Interfaces\AsyncObjectDownloaderInterface;
 use S3DataTransfer\Interfaces\ObjectInterface;
-use S3DataTransfer\Interfaces\StreamCollectorInterface;
-use S3DataTransfer\Utils\S3FileVerifier;
 
-class AsyncStreamResourceCollector implements StreamCollectorInterface
+class AsyncStreamResourceCollector extends AbstractResourceCollector
 {
     public function __construct(
         private AsyncObjectDownloaderInterface $downloader,
-        private LoggerInterface $loggerInterface,
-        private bool $checkObjectExist = false
+        protected LoggerInterface $loggerInterface,
+        protected bool $checkObjectExist = false
     ) {
-    }
-
-    public function checkForObjectExistence(): void
-    {
-        $this->checkObjectExist = true;
     }
 
     /**
@@ -58,17 +51,6 @@ class AsyncStreamResourceCollector implements StreamCollectorInterface
             if ($stream = fopen($path, 'r', false, $context)) {
                 yield $fileName => $stream;
             }
-        }
-    }
-
-    private function validateResourceObjects(string $bucket, ObjectInterface $obj)
-    {
-        if (!($obj instanceof ObjectInterface)) {
-            throw new InvalidParamsException('Resources to download must be composed of ResourceObject instances only.');
-        }
-
-        if ($this->checkObjectExist) {
-            S3FileVerifier::verifyFileExistence($bucket, $obj->path());
         }
     }
 }
