@@ -1,12 +1,9 @@
 <?php
 
-namespace S3DataTransfer\S3\Downloader\Factories;
+namespace S3DataTransfer\S3\Factories;
 
 use GuzzleHttp\Client as HttpClient;
 use S3DataTransfer\Clients\HttpAsyncClient;
-use S3DataTransfer\Credentials\S3ClientFactory;
-use S3DataTransfer\Credentials\S3Credentials;
-use S3DataTransfer\Credentials\S3Options;
 use S3DataTransfer\Interfaces\Download\DownloaderFactoryInterface;
 use S3DataTransfer\Interfaces\Download\StreamCollectorInterface;
 use S3DataTransfer\Logger\LoggerFactory;
@@ -21,10 +18,12 @@ class S3AsyncDownloaderFactory implements DownloaderFactoryInterface
         string $s3Region,
         string $s3Version
     ): StreamCollectorInterface {
-        $s3Options = new S3Options(new S3Credentials($s3Key, $s3Secret), $s3Region, $s3Version);
-
-        $factoryS3Client = new S3ClientFactory();
-        $s3client = $factoryS3Client->getClient($s3Options);
+        $s3client = ClientProvider::getS3Client(
+            $s3Key,
+            $s3Secret,
+            $s3Region,
+            $s3Version
+        );
         $asyncHttpClient = new HttpAsyncClient(new HttpClient());
 
         return new AsyncStreamResourceCollector(
