@@ -13,5 +13,5 @@ interface AsyncObjectDownloaderInterface
      *
      * @return <string, PromiseInterface>
      */
-    public function downloadObjectAsync(string $bucket, string $key, $useTempLocation = false): AsyncObjectResponse;
+    public function downloadObjectAsync(string $bucket, string $key, $useTempLocation = true): AsyncObjectResponse;
 }

@@ -12,7 +12,7 @@ class GetObject implements ObjectDownloaderInterface
     {
     }
 
-    public function downloadObject(string $bucket, string $key, $useTempLocation = false): string
+    public function downloadObject(string $bucket, string $key, $useTempLocation = true): string
     {
         try {
             $fileName = $useTempLocation ? $this->getTempName() : $key;

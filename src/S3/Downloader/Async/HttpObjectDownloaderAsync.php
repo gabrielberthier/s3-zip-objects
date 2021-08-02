@@ -16,7 +16,7 @@ class HttpObjectDownloaderAsync implements AsyncObjectDownloaderInterface
         $this->s3client->registerStreamWrapper();
     }
 
-    public function downloadObjectAsync(string $bucket, string $key, $useTempLocation = false): AsyncObjectResponse
+    public function downloadObjectAsync(string $bucket, string $key, $useTempLocation = true): AsyncObjectResponse
     {
         $this->prepareBucketHead($bucket);
 

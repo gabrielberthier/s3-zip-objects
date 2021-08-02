@@ -16,7 +16,7 @@ class HttpObjectDownloader implements ObjectDownloaderInterface
         $this->s3Client->registerStreamWrapper();
     }
 
-    public function downloadObject(string $bucket, string $key, $useTempLocation = false): string
+    public function downloadObject(string $bucket, string $key, $useTempLocation = true): string
     {
         $this->prepareBucketHead($bucket);
 
