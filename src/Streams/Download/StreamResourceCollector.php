@@ -5,7 +5,7 @@ namespace S3DataTransfer\Streams\Download;
 use Generator;
 use Psr\Log\LoggerInterface;
 use S3DataTransfer\Exceptions\InvalidParamsException;
-use S3DataTransfer\Interfaces\ObjectDownloaderInterface;
+use S3DataTransfer\Interfaces\Download\ObjectDownloaderInterface;
 use S3DataTransfer\Interfaces\ObjectInterface;
 
 class StreamResourceCollector extends AbstractResourceCollector

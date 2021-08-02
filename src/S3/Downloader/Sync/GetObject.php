@@ -4,7 +4,7 @@ namespace S3DataTransfer\S3\Downloader\Sync;
 
 use Aws\S3\Exception\S3Exception;
 use Aws\S3\S3Client;
-use S3DataTransfer\Interfaces\ObjectDownloaderInterface;
+use S3DataTransfer\Interfaces\Download\ObjectDownloaderInterface;
 
 class GetObject implements ObjectDownloaderInterface
 {

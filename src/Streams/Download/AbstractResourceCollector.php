@@ -4,8 +4,8 @@ namespace S3DataTransfer\Streams\Download;
 
 use Psr\Log\LoggerInterface;
 use S3DataTransfer\Exceptions\InvalidParamsException;
+use S3DataTransfer\Interfaces\Download\StreamCollectorInterface;
 use S3DataTransfer\Interfaces\ObjectInterface;
-use S3DataTransfer\Interfaces\StreamCollectorInterface;
 use S3DataTransfer\Utils\S3FileVerifier;
 
 abstract class AbstractResourceCollector implements StreamCollectorInterface

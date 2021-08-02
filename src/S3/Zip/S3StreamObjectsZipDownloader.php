@@ -2,8 +2,8 @@
 
 namespace S3DataTransfer\S3\Zip;
 
+use S3DataTransfer\Interfaces\Download\StreamCollectorInterface;
 use S3DataTransfer\Interfaces\ObjectInterface;
-use S3DataTransfer\Interfaces\StreamCollectorInterface;
 use ZipStream\Option\Archive as ArchiveOptions;
 use ZipStream\ZipStream;
 

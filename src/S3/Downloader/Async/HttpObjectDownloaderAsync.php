@@ -7,7 +7,7 @@ use Aws\S3\S3Client;
 use Psr\Http\Message\RequestInterface;
 use S3DataTransfer\Exceptions\InvalidParamsException;
 use S3DataTransfer\Interfaces\AsyncClientInterface;
-use S3DataTransfer\Interfaces\AsyncObjectDownloaderInterface;
+use S3DataTransfer\Interfaces\Download\AsyncObjectDownloaderInterface;
 
 class HttpObjectDownloaderAsync implements AsyncObjectDownloaderInterface
 {

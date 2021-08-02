@@ -1,6 +1,6 @@
 <?php
 
-namespace S3DataTransfer\Interfaces;
+namespace S3DataTransfer\Interfaces\Download;
 
 use S3DataTransfer\S3\Downloader\Async\AsyncObjectResponse;
 
