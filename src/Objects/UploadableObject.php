@@ -3,7 +3,7 @@
 namespace S3DataTransfer\Objects;
 
 use Psr\Http\Message\StreamInterface;
-use S3DataTransfer\Interfaces\UploadableObjectInterface;
+use S3DataTransfer\Interfaces\Objects\UploadableObjectInterface;
 
 final class UploadableObject implements UploadableObjectInterface
 {
