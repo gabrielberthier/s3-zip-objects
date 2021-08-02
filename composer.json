@@ -15,7 +15,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "E2E\\": "e2e/"
         }
     },
     "config": {
@@ -36,6 +37,7 @@
     "scripts": {
         "test": "phpunit",
         "test:e2e": "phpunit e2e/S3ObjectStreamTest.php",
+        "test:e2e-async": "phpunit e2e/S3ObjectStreamTestAsync.php",
         "test:nodebug": "@php -c ./disable-xdebug.ini && phpunit",
         "test:update": "phpunit --migrate-configuration"
     }

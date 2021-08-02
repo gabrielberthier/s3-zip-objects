@@ -11,7 +11,7 @@ use S3DataTransfer\Interfaces\AsyncObjectDownloaderInterface;
 
 class HttpObjectDownloaderAsync implements AsyncObjectDownloaderInterface
 {
-    public function __construct(private S3Client $s3Client, private AsyncClientInterface $clientInterface)
+    public function __construct(private S3Client $s3client, private AsyncClientInterface $clientInterface)
     {
         $this->s3client->registerStreamWrapper();
     }

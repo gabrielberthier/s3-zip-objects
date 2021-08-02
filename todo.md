@@ -1,0 +1,5 @@
+- Test async downloading
+- Test error cases
+- Add unit tests
+- Implement upload
+- Implement async upload
