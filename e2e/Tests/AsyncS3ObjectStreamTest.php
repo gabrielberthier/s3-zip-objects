@@ -14,7 +14,7 @@ use S3DataTransfer\Objects\ResourceObject;
 use S3DataTransfer\S3\Downloader\Async\HttpObjectDownloaderAsync;
 use S3DataTransfer\Streams\AsyncStreamResourceCollector;
 
-/**
+  /**
    * @internal
    * @coversNothing
    */
@@ -42,6 +42,15 @@ use S3DataTransfer\Streams\AsyncStreamResourceCollector;
 
               assertNotEmpty($stream);
               assertNotNull($stream);
+          }
+      }
+
+      public function testIfNameProvidedIsReturnInResource()
+      {
+          $resource = new ResourceObject('test.txt', 'testa.txt');
+          $stream = $this->streamResourceCollector->streamCollect(self::$bucket, $resource);
+          foreach ($stream as $name => $value) {
+              assertSame($name, $resource->name());
           }
       }
   }
