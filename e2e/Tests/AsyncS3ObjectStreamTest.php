@@ -1,7 +1,8 @@
 <?php
 
-namespace E2E;
+namespace E2E\Tests;
 
+use E2E\Tests\AbstractTestCase\E2ETestCase;
 use GuzzleHttp\Client;
 use function PHPUnit\Framework\assertNotEmpty;
 use function PHPUnit\Framework\assertNotNull;
@@ -13,13 +14,11 @@ use S3DataTransfer\Objects\ResourceObject;
 use S3DataTransfer\S3\Downloader\Async\HttpObjectDownloaderAsync;
 use S3DataTransfer\Streams\AsyncStreamResourceCollector;
 
-require __DIR__.'/../vendor/autoload.php';
-
-  /**
+/**
    * @internal
    * @coversNothing
    */
-  class S3ObjectStreamTestAsync extends E2ETestCase
+  class AsyncS3ObjectStreamTest extends E2ETestCase
   {
       protected StreamResourceCollectorInterface $streamResourceCollector;
 

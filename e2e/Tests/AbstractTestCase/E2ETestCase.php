@@ -1,6 +1,6 @@
 <?php
 
-namespace E2E;
+namespace E2E\Tests\AbstractTestCase;
 
 use Aws\S3\S3Client;
 use PHPUnit\Framework\TestCase;
@@ -20,7 +20,7 @@ abstract class E2ETestCase extends TestCase
         if ($argc >= 5) {
             $array = array_slice($argv, 2);
         } else {
-            if (($open = fopen(__DIR__.'/../credentials.txt', 'r')) !== false) {
+            if (($open = fopen(getcwd().'/credentials.txt', 'r')) !== false) {
                 while (($data = fgetcsv($open, 1000, ';')) !== false) {
                     $array = $data;
                 }

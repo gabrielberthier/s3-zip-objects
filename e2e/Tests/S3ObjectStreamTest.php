@@ -1,7 +1,8 @@
 <?php
 
-namespace E2E;
+namespace E2E\Tests;
 
+use E2E\Tests\AbstractTestCase\E2ETestCase;
 use GuzzleHttp\Client;
 use function PHPUnit\Framework\assertNotEmpty;
 use function PHPUnit\Framework\assertNotNull;
