@@ -10,7 +10,7 @@ use S3DataTransfer\Logger\LoggerFactory;
 use S3DataTransfer\Objects\ResourceObject;
 use S3DataTransfer\S3\Downloader\Async\HttpObjectDownloaderAsync;
 use S3DataTransfer\S3\Zip\S3StreamObjectsZipDownloader;
-use S3DataTransfer\Streams\AsyncStreamResourceCollector;
+use S3DataTransfer\Streams\Download\AsyncStreamResourceCollector;
 
 /**
  * @internal

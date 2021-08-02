@@ -12,7 +12,7 @@ use S3DataTransfer\Interfaces\StreamCollectorInterface;
 use S3DataTransfer\Logger\LoggerFactory;
 use S3DataTransfer\Objects\ResourceObject;
 use S3DataTransfer\S3\Downloader\Sync\HttpObjectDownloader;
-use S3DataTransfer\Streams\StreamResourceCollector;
+use S3DataTransfer\Streams\Download\StreamResourceCollector;
 
   /**
    * @internal

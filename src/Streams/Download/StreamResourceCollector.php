@@ -1,20 +1,19 @@
 <?php
 
-namespace S3DataTransfer\Streams;
+namespace S3DataTransfer\Streams\Download;
 
 use Generator;
-use GuzzleHttp\Promise\Utils;
 use Psr\Log\LoggerInterface;
 use S3DataTransfer\Exceptions\InvalidParamsException;
-use S3DataTransfer\Interfaces\AsyncObjectDownloaderInterface;
+use S3DataTransfer\Interfaces\ObjectDownloaderInterface;
 use S3DataTransfer\Interfaces\ObjectInterface;
 use S3DataTransfer\Interfaces\StreamCollectorInterface;
 use S3DataTransfer\Utils\S3FileVerifier;
 
-class AsyncStreamResourceCollector implements StreamCollectorInterface
+class StreamResourceCollector implements StreamCollectorInterface
 {
     public function __construct(
-        private AsyncObjectDownloaderInterface $downloader,
+        private ObjectDownloaderInterface $downloader,
         private LoggerInterface $loggerInterface,
         private bool $checkObjectExist = false
     ) {
@@ -38,25 +37,18 @@ class AsyncStreamResourceCollector implements StreamCollectorInterface
             's3' => ['seekable' => true],
         ]);
 
-        $files = [];
-        $promises = [];
         foreach ($resourceObjects as $obj) {
             try {
                 $this->validateResourceObjects($bucketName, $obj);
-                $response = $this->downloader->downloadObjectAsync($bucketName, $obj->path());
-                $fileName = $obj->name() ?? $response->fileName();
-                $files[$fileName] = $response->fileName();
-                $promises[] = $response->promise();
+
+                $tmpfile = $this->downloader->downloadObject($bucketName, $obj->path());
+
+                if ($stream = fopen($tmpfile, 'r', false, $context)) {
+                    $fileName = $obj->name() ?? $tmpfile;
+                    yield $fileName => $stream;
+                }
             } catch (InvalidParamsException $e) {
                 $this->loggerInterface->alert($e->getMessage());
-            }
-        }
-
-        Utils::unwrap($promises);
-
-        foreach ($files as $fileName => $path) {
-            if ($stream = fopen($path, 'r', false, $context)) {
-                yield $fileName => $stream;
             }
         }
     }
