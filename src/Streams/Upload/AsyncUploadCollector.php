@@ -3,13 +3,13 @@
 namespace S3DataTransfer\Streams\Upload;
 
 use GuzzleHttp\Promise\Utils;
+use Psr\Log\LoggerInterface;
 use S3DataTransfer\Interfaces\Objects\UploadableObjectInterface;
 use S3DataTransfer\Interfaces\Upload\AsyncUploaderInterface;
-use S3DataTransfer\Interfaces\Upload\UploadCollectorInterface;
 
-class AsyncUploadCollector implements UploadCollectorInterface
+class AsyncUploadCollector extends AbstractUploaderCollector
 {
-    public function __construct(private AsyncUploaderInterface $asyncUploaderInterface)
+    public function __construct(private AsyncUploaderInterface $asyncUploaderInterface, protected LoggerInterface $loggerInterface)
     {
     }
 

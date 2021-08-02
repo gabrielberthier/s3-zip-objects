@@ -2,14 +2,16 @@
 
 namespace S3DataTransfer\Streams\Upload;
 
+use Psr\Log\LoggerInterface;
 use S3DataTransfer\Interfaces\Objects\UploadableObjectInterface;
-use S3DataTransfer\Interfaces\Upload\UploadCollectorInterface;
 use S3DataTransfer\Interfaces\Upload\UploaderInterface;
 
-class UploadCollector implements UploadCollectorInterface
+class UploadCollector extends AbstractUploaderCollector
 {
-    public function __construct(private UploaderInterface $uploader)
-    {
+    public function __construct(
+        private UploaderInterface $uploader,
+        protected LoggerInterface $loggerInterface
+    ) {
     }
 
     public function uploadObjects(string $bucket, UploadableObjectInterface ...$objects): array
