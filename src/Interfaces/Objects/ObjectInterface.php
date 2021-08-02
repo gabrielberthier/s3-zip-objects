@@ -1,6 +1,6 @@
 <?php
 
-namespace S3DataTransfer\Interfaces;
+namespace S3DataTransfer\Interfaces\Objects;
 
 interface ObjectInterface
 {

@@ -3,6 +3,7 @@
 namespace S3DataTransfer\Interfaces\Download;
 
 use Generator;
+use S3DataTransfer\Interfaces\Objects\ObjectInterface;
 use S3DataTransfer\Objects\ResourceObject;
 
 interface StreamCollectorInterface

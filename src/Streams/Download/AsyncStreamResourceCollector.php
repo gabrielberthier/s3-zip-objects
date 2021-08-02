@@ -7,7 +7,7 @@ use GuzzleHttp\Promise\Utils;
 use Psr\Log\LoggerInterface;
 use S3DataTransfer\Exceptions\InvalidParamsException;
 use S3DataTransfer\Interfaces\Download\AsyncObjectDownloaderInterface;
-use S3DataTransfer\Interfaces\ObjectInterface;
+use S3DataTransfer\Interfaces\Objects\ObjectInterface;
 
 class AsyncStreamResourceCollector extends AbstractResourceCollector
 {

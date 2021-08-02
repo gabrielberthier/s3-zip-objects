@@ -6,7 +6,7 @@ use Generator;
 use Psr\Log\LoggerInterface;
 use S3DataTransfer\Exceptions\InvalidParamsException;
 use S3DataTransfer\Interfaces\Download\ObjectDownloaderInterface;
-use S3DataTransfer\Interfaces\ObjectInterface;
+use S3DataTransfer\Interfaces\Objects\ObjectInterface;
 
 class StreamResourceCollector extends AbstractResourceCollector
 {

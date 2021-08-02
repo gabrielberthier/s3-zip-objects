@@ -3,7 +3,7 @@
 namespace S3DataTransfer\Objects;
 
 use S3DataTransfer\Exceptions\InvalidParamsException;
-use S3DataTransfer\Interfaces\ObjectInterface;
+use S3DataTransfer\Interfaces\Objects\ObjectInterface;
 
 final class ResourceObject implements ObjectInterface
 {
