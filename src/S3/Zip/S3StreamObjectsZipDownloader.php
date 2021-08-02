@@ -1,6 +1,6 @@
 <?php
 
-namespace S3DataTransfer\S3;
+namespace S3DataTransfer\S3\Zip;
 
 use S3DataTransfer\Interfaces\ObjectInterface;
 use S3DataTransfer\Interfaces\StreamResourceCollectorInterface;
