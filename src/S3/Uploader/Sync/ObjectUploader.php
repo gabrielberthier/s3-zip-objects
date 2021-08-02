@@ -5,8 +5,9 @@ namespace S3DataTransfer\S3\Uploader\Sync;
 use Aws\Result;
 use Aws\S3\S3Client;
 use Psr\Http\Message\StreamInterface;
+use S3DataTransfer\Interfaces\Upload\UploaderInterface;
 
-class ObjectUploader
+class ObjectUploader implements UploaderInterface
 {
     public function __construct(private S3Client $s3client)
     {
