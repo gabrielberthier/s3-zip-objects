@@ -7,10 +7,10 @@ use Psr\Log\LoggerInterface;
 use S3DataTransfer\Exceptions\InvalidParamsException;
 use S3DataTransfer\Interfaces\ObjectDownloaderInterface;
 use S3DataTransfer\Interfaces\ObjectInterface;
-use S3DataTransfer\Interfaces\StreamResourceCollectorInterface;
+use S3DataTransfer\Interfaces\StreamCollectorInterface;
 use S3DataTransfer\Utils\S3FileVerifier;
 
-class StreamResourceCollector implements StreamResourceCollectorInterface
+class StreamResourceCollector implements StreamCollectorInterface
 {
     public function __construct(
         private ObjectDownloaderInterface $downloader,

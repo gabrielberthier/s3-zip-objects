@@ -8,7 +8,7 @@ use function PHPUnit\Framework\assertNotEmpty;
 use function PHPUnit\Framework\assertNotNull;
 use function PHPUnit\Framework\assertSame;
 use S3DataTransfer\Clients\HttpClientAdapter;
-use S3DataTransfer\Interfaces\StreamResourceCollectorInterface;
+use S3DataTransfer\Interfaces\StreamCollectorInterface;
 use S3DataTransfer\Logger\LoggerFactory;
 use S3DataTransfer\Objects\ResourceObject;
 use S3DataTransfer\S3\Downloader\Sync\HttpObjectDownloader;
@@ -20,7 +20,7 @@ use S3DataTransfer\Streams\StreamResourceCollector;
    */
   class S3ObjectStreamTest extends E2ETestCase
   {
-      protected StreamResourceCollectorInterface $streamResourceCollector;
+      protected StreamCollectorInterface $streamResourceCollector;
 
       public function setUp(): void
       {

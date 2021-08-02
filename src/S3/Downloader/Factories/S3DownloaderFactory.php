@@ -8,7 +8,7 @@ use S3DataTransfer\Credentials\S3ClientFactory;
 use S3DataTransfer\Credentials\S3Credentials;
 use S3DataTransfer\Credentials\S3Options;
 use S3DataTransfer\Interfaces\DownloaderFactoryInterface;
-use S3DataTransfer\Interfaces\StreamResourceCollectorInterface;
+use S3DataTransfer\Interfaces\StreamCollectorInterface;
 use S3DataTransfer\Logger\LoggerFactory;
 use S3DataTransfer\S3\Downloader\Sync\HttpObjectDownloader;
 use S3DataTransfer\Streams\StreamResourceCollector;
@@ -20,7 +20,7 @@ class S3DownloaderFactory implements DownloaderFactoryInterface
         string $s3Secret,
         string $s3Region,
         string $s3Version
-    ): StreamResourceCollectorInterface {
+    ): StreamCollectorInterface {
         $s3Options = new S3Options(new S3Credentials($s3Key, $s3Secret), $s3Region, $s3Version);
 
         $factoryS3Client = new S3ClientFactory();

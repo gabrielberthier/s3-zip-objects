@@ -3,7 +3,7 @@
 namespace S3DataTransfer\S3\Zip;
 
 use S3DataTransfer\Interfaces\ObjectInterface;
-use S3DataTransfer\Interfaces\StreamResourceCollectorInterface;
+use S3DataTransfer\Interfaces\StreamCollectorInterface;
 use ZipStream\Option\Archive as ArchiveOptions;
 use ZipStream\ZipStream;
 
@@ -12,7 +12,7 @@ class S3StreamObjectsZipDownloader
     protected $opt;
     protected $stream;
 
-    public function __construct(private StreamResourceCollectorInterface $streamResourceCollector)
+    public function __construct(private StreamCollectorInterface $streamResourceCollector)
     {
         // https://github.com/maennchen/ZipStream-PHP/wiki/Available-options
         $this->opt = new ArchiveOptions();

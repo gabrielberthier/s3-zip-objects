@@ -5,7 +5,7 @@ namespace S3DataTransfer\Interfaces;
 use Generator;
 use S3DataTransfer\Objects\ResourceObject;
 
-interface StreamResourceCollectorInterface
+interface StreamCollectorInterface
 {
     /**
      * Collects a stream of resources.

@@ -9,5 +9,5 @@ interface DownloaderFactoryInterface
         string $s3Secret,
         string $s3Region,
         string $s3Version
-    ): StreamResourceCollectorInterface;
+    ): StreamCollectorInterface;
 }

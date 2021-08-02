@@ -8,10 +8,10 @@ use Psr\Log\LoggerInterface;
 use S3DataTransfer\Exceptions\InvalidParamsException;
 use S3DataTransfer\Interfaces\AsyncObjectDownloaderInterface;
 use S3DataTransfer\Interfaces\ObjectInterface;
-use S3DataTransfer\Interfaces\StreamResourceCollectorInterface;
+use S3DataTransfer\Interfaces\StreamCollectorInterface;
 use S3DataTransfer\Utils\S3FileVerifier;
 
-class AsyncStreamResourceCollector implements StreamResourceCollectorInterface
+class AsyncStreamResourceCollector implements StreamCollectorInterface
 {
     public function __construct(
         private AsyncObjectDownloaderInterface $downloader,
