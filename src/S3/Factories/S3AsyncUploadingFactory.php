@@ -3,11 +3,12 @@
 namespace S3DataTransfer\S3\Factories;
 
 use S3DataTransfer\Interfaces\Upload\UploadCollectorInterface;
+use S3DataTransfer\Interfaces\Upload\UploaderFactoryInterface;
 use S3DataTransfer\Logger\LoggerFactory;
 use S3DataTransfer\S3\Uploader\Async\AsyncObjectUploader;
 use S3DataTransfer\Streams\Upload\AsyncUploadCollector;
 
-class S3AsyncUploadingFactory
+class S3AsyncUploadingFactory implements UploaderFactoryInterface
 {
     public function create(
         string $s3Key,
