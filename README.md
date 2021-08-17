@@ -5,14 +5,14 @@ A package to handle S3 upload and download using PSR-7 interfaces, async operati
 How does it work?
 <br>
 IZI
-You only need to provide a set of AWS credentials to be able to do both uploading and downloading from resources, i.e:
+You only need to provide a set of AWS credentials to be able to do both uploading and downloading from resources, which are:
 
-1. your AWS IAM key;
-2. your secret;
-3. the bucket region;
-4. the version used and
+1. AWS IAM key;
+2. secret;
+3. the bucket region and
+4. the version used in your bucket.
 
-Then, it's required to instantiate any of the factories for downloading (S3DownloaderFactory, S3AsyncDownloaderFactory) or uploading (S3UploadingFactory, S3AsyncUploadingFactory), provide some aws object's info to the factories object's you received and voilá, you are able to use the functionalities provided by this lib.
+Then, it's required to instantiate any of the factories for downloading (S3DownloaderFactory, S3AsyncDownloaderFactory) or uploading (S3UploadingFactory, S3AsyncUploadingFactory), provide some AWS object's info to the factory object you received and voilá, you are able to use the functionalities provided by this lib.
 
 ## Downloading objects from S3
 
