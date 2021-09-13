@@ -2,6 +2,9 @@
 
 namespace S3DataTransfer\Interfaces\Download;
 
+/**
+ * Creates a downloader.
+ */
 interface DownloaderFactoryInterface
 {
     public function create(
