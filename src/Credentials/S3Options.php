@@ -22,7 +22,7 @@ class S3Options implements JsonSerializable
         ];
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return $this->createConfiguration();
     }
