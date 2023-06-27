@@ -27,7 +27,7 @@
         "php": "^8.0",
         "league/flysystem-aws-s3-v3": "^1.0",
         "maennchen/zipstream-php": "^2.1",
-        "monolog/monolog": "^2.3",
+        "monolog/monolog": "^3.0",
         "vlucas/phpdotenv": "^5.3"
     },
     "require-dev": {
