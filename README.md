@@ -16,7 +16,7 @@ Then, it's required to instantiate any of the factories for downloading (S3Downl
 
 ## Downloading objects from S3
 
-```
+```php
 // Receive a stream from the objects
 $stream = $streamResourceCollector->streamCollect(
   $bucketName,
@@ -33,7 +33,7 @@ foreach ($resources as $objkey => $obj) {
 
 ## Uploading objects to S3
 
-```
+```php
 // $source may be a object Stream or a string path
 $results = $uploadObjects($bucketName, new UploadableObject('test-upload.txt', $source));
 
@@ -41,7 +41,7 @@ $results = $uploadObjects($bucketName, new UploadableObject('test-upload.txt', $
 
 ## Zip objects
 
-```
+```php
   // $streamCollector must be an instance of StreamCollectorInterface
   $streamCollector = (new S3DownloaderFactory()->create(/* credentials */));
   $zip = new S3StreamObjectsZipDownloader($streamCollector);
